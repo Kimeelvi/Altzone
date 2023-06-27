@@ -52,6 +52,7 @@ namespace Battle.Scripts.Battle.Game
         private BoxCollider2D _topWallCollider;
 
         private const float BrickSpriteWidth = 2.35f;
+        
         private const int BricksPerWall = 5;
 
         private Rect _playStartAreaAlpha;
@@ -87,8 +88,8 @@ namespace Battle.Scripts.Battle.Game
             _leftBottomWallCollider.size = arenaSize;
             _bottomWallCollider.size = arenaSize;
             _topWallCollider.size = arenaSize;
-            _rightMidWallCollider.size = new Vector2(_arenaWidth, 1.6f);
-            _leftMidWallCollider.size = new Vector2(_arenaWidth, 1.6f);
+            _rightMidWallCollider.size = new Vector2(_arenaWidth, 1.4f);
+            _leftMidWallCollider.size = new Vector2(_arenaWidth, 1.4f);
 
             _leftMidWall.transform.position = new Vector2(-_arenaWidth, 0);
             _rightMidWall.transform.position = new Vector2(_arenaWidth, 0);
