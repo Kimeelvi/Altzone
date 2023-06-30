@@ -38,6 +38,8 @@ namespace Battle.Scripts.Test
         private PlayerPlayArea _battlePlayArea;
         private float _arenaScaleFactor;
 
+        private float _hasRealPlayerShotBall; // this will turn True when the ball is moving after the player has stayed near the bot player
+
         [Header("Live Data"), SerializeField, ReadOnly] private int _actorNumber;
 
         private void Awake()
