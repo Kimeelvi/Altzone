@@ -1194,7 +1194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ball: {fileID: 539224845}
-  _aimingTimeSec: 0
+  _aimingTimeSec: 15
   _startingDistance: 1
   _defaultSpeed: 7
   _autoStart: 1
@@ -1797,10 +1797,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _settings:
     _nickName: 
-    _playerPos: 1
+    _playerPos: 2
     _teamNumber: 1
-    _isLocal: 0
-  _playerPrefab: {fileID: 0}
+    _isLocal: 1
+  _playerPrefab: {fileID: 8975400094333793158, guid: f71ca8d92faed714eaaaae378bf48bca,
+    type: 3}
   _actorNumber: 0
 --- !u!4 &688808218
 Transform:
