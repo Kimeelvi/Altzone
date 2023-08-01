@@ -7,6 +7,7 @@ using Photon.Pun;
 
 public class SyncedFixedUpdateClockTest : MonoBehaviour
 {
+    public const int UPDATES_PER_SECONDS = 50; // this variable needs to be set to the number of times FixedUpdate is called per second
     private bool _synced = false;
     private int _updateCount = 0;
 
@@ -94,7 +95,7 @@ public class SyncedFixedUpdateClockTest : MonoBehaviour
 
         public static void Execute(int updateNumber)
         {
-            // execute event this updates events
+            // execute this updates events
             int i = s_first;
             Event @event;
             while(i < s_size)
@@ -112,12 +113,18 @@ public class SyncedFixedUpdateClockTest : MonoBehaviour
 
     private PhotonView _photonView;
 
+#if DEVELOPMENT_BUILD
     private TextMeshPro _textMeshPro;
+#endif
 
     private void Start()
     {
-        _photonView = GetComponent<PhotonView>();
+#if DEVELOPMENT_BUILD
+        transform.GetChild(0).gameObject.SetActive(true);
         _textMeshPro = GetComponentInChildren<TextMeshPro>();
+#endif
+
+        _photonView = GetComponent<PhotonView>();
 
         if (PhotonNetwork.IsMasterClient)
         {
@@ -128,6 +135,26 @@ public class SyncedFixedUpdateClockTest : MonoBehaviour
     public bool Synced => _synced;
 
     public int UpdateCount => _updateCount;
+
+    public int ToUpdates(int seconds)
+    {
+        return seconds * UPDATES_PER_SECONDS;
+    }
+
+    public int ToUpdates(float seconds)
+    {
+        return (int)Mathf.Ceil(seconds * UPDATES_PER_SECONDS);
+    }
+
+    public int ToUpdates(double seconds)
+    {
+        return (int)Math.Ceiling(seconds * UPDATES_PER_SECONDS);
+    }
+
+    public double ToSeconds(int updates)
+    {
+        return ((double)updates) / ((double)UPDATES_PER_SECONDS);
+    }
 
     public void ExecuteOnUpdate(int updateNumber, int priority, Action action)
     {
@@ -149,7 +176,11 @@ public class SyncedFixedUpdateClockTest : MonoBehaviour
     private void FixedUpdate()
     {
         if (!_synced) return;
+
+#if DEVELOPMENT_BUILD
         _textMeshPro.text = "Update\n" + _updateCount.ToString();
+#endif
+
         UpdateQueue.Execute(_updateCount);
         _updateCount++;
     }
