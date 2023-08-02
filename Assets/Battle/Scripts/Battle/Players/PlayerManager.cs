@@ -86,8 +86,10 @@ internal class TeamsAreReadyForGameplay
 
 internal class PlayerManager : MonoBehaviour
 {
+    /*
     [Header("Prefabs")]
     [SerializeField] private GameObject _rangeIndicator;
+    */
 
     private List<IDriver> _allDrivers = new();
     private List<PlayerDriverPhoton> _allPlayerDrivers = new();
@@ -148,11 +150,11 @@ internal class PlayerManager : MonoBehaviour
         if (readyPeers == realPlayerCount)
         {
             GetLocalDriver(); // Finds the local driver from _allDrivers and sets it in _localPlayer
-            AttachRangeIndicator(); // Attaches a range indicator to the ally of _localPlayer
+            //AttachRangeIndicator(); // Attaches a range indicator to the ally of _localPlayer
             this.ExecuteOnNextFrame(() =>
             {
                 Debug.Log("TeamsAreReadyForGameplay");
-                this.Publish(new TeamsAreReadyForGameplay(_allPlayerDrivers, _teamAlpha, _teamBeta, _localPlayer));
+                this.Publish(new TeamsAreReadyForGameplay(_allDrivers, _teamAlpha, _teamBeta, _localPlayer));
             });
         }
     }
@@ -169,11 +171,13 @@ internal class PlayerManager : MonoBehaviour
         }
     }
 
+    /*
     private void AttachRangeIndicator()
     {
         try { Instantiate(_rangeIndicator, GetAlly(_localPlayer).transform); }
         catch { Debug.Log("Local player is missing an ally"); }
     }
+    */
 
     private GameObject GetAlly(PlayerDriverPhoton selfDriver)
     {
