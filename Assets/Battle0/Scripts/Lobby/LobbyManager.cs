@@ -34,6 +34,7 @@ namespace Battle0.Scripts.Lobby
         [SerializeField] private WindowDef _gameWindow;
         [SerializeField] private bool _isCloseRoomOnGameStart;
         [SerializeField] private SceneDef _raidScene;
+        [SerializeField] private SceneDef _tutorialScene;
 
         [Header("Team Names"), SerializeField] private string _blueTeamName;
         [SerializeField] private string _redTeamName;
@@ -45,6 +46,7 @@ namespace Battle0.Scripts.Lobby
             this.Subscribe<StartRoomEvent>(OnStartRoomEvent);
             this.Subscribe<StartPlayingEvent>(OnStartPlayingEvent);
             this.Subscribe<StartRaidTestEvent>(OnStartRaidTestEvent);
+            this.Subscribe<StartTutorialTestEvent>(OnStartTutorialTestEvent);
         }
 
         public override void OnDisable()
@@ -87,6 +89,12 @@ namespace Battle0.Scripts.Lobby
         {
             Debug.Log($"onEvent {data}");
             StartCoroutine(StartTheRaidTestRoom(_raidScene));
+        }
+
+        private void OnStartTutorialTestEvent(StartTutorialTestEvent data)
+        {
+            Debug.Log($"onEvent {data}");
+            StartCoroutine(StartTheTutorialTestRoom(_tutorialScene));
         }
 
         private static IEnumerator StartTheGameplay(WindowDef gameWindow, bool isCloseRoom, string blueTeamName, string redTeamName)
@@ -156,7 +164,22 @@ namespace Battle0.Scripts.Lobby
             }
             PhotonNetwork.LoadLevel(raidScene.SceneName);
         }
-        
+
+        private static IEnumerator StartTheTutorialTestRoom(SceneDef tutorialScene)
+        {
+            Debug.Log($"RAID TEST {tutorialScene}");
+            if (!PhotonNetwork.IsMasterClient)
+            {
+                throw new UnityException("only master client can start this game");
+            }
+            yield return null;
+            if (!tutorialScene.IsNetworkScene)
+            {
+                throw new UnityException($"scene {tutorialScene} IsNetworkScene = false");
+            }
+            PhotonNetwork.LoadLevel(tutorialScene.SceneName);
+        }
+
         private static void SetPlayer(Player player, int playerPosition)
         {
             Assert.IsTrue(PhotonBattle.IsValidGameplayPosOrGuest(playerPosition));
@@ -219,6 +242,10 @@ namespace Battle0.Scripts.Lobby
         {
         }
         public class StartRaidTestEvent
+        {
+        }
+
+        public class StartTutorialTestEvent
         {
         }
     }

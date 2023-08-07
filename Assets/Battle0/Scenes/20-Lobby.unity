@@ -439,6 +439,7 @@ MonoBehaviour:
   _gameWindow: {fileID: 11400000, guid: 788f9d753ce503045bfe455e66f76270, type: 2}
   _isCloseRoomOnGameStart: 1
   _raidScene: {fileID: 11400000, guid: cc738fef709af534eb951a67291779f3, type: 2}
+  _tutorialScene: {fileID: 11400000, guid: e01f9cf3380c56842b90051e585d7511, type: 2}
   _blueTeamName: Alpha
   _redTeamName: Beta
 --- !u!1 &1556160748

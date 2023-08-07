@@ -45,6 +45,7 @@ namespace Battle0.Scripts.Lobby.InRoom
             this.Publish(new LobbyManager.StartRaidTestEvent());
         }
 
+        
         /// <summary>
         /// Stupid way to poll network state changes on every frame!
         /// </summary>

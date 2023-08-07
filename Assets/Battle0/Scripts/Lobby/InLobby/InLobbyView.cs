@@ -12,6 +12,7 @@ namespace Battle0.Scripts.Lobby.InLobby
         [SerializeField] private Button _roomButton;
         [SerializeField] private Button _raidButton;
         [SerializeField] private Button _quickGameButton;
+        [SerializeField] private Button _tutorialButton;
 
         public Action CharacterButtonOnClick
         {
@@ -29,7 +30,11 @@ namespace Battle0.Scripts.Lobby.InLobby
         {
             set { _quickGameButton.onClick.AddListener(() => value()); }
         }
-        
+        public Action TutorialButtonOnClick
+        {
+            set { _tutorialButton.onClick.AddListener(() => value()); }
+        }
+
         public string TitleText
         {
             set => _titleText.text = value;
@@ -53,6 +58,7 @@ namespace Battle0.Scripts.Lobby.InLobby
             _roomButton.interactable = false;
             _raidButton.interactable = false;
             _quickGameButton.interactable = false;
+            _tutorialButton.interactable = false;
         }
 
         public void EnableButtons()
@@ -61,6 +67,7 @@ namespace Battle0.Scripts.Lobby.InLobby
             _roomButton.interactable = true;
             _raidButton.interactable = true;
             _quickGameButton.interactable = true;
+            _tutorialButton.interactable= true;
         }
     }
 }

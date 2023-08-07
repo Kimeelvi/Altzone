@@ -4101,7 +4101,7 @@ PrefabInstance:
     - target: {fileID: 3935264899594760233, guid: c485b8144134c2645b59e6c0a1074a62,
         type: 3}
       propertyPath: _isOfflineMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3935264899594760235, guid: c485b8144134c2645b59e6c0a1074a62,
         type: 3}
