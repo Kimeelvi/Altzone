@@ -117,7 +117,7 @@ namespace Altzone.Scripts.Model
                 new(GestaltCycle.Deflection.ToString(), GestaltCycle.Deflection, "Vitsiniekka", 9, 3, 3, 4),
                 new(GestaltCycle.Introjection.ToString(), GestaltCycle.Introjection, "Pappi", 5, 5, 4, 4),
                 new(GestaltCycle.Projection.ToString(), GestaltCycle.Projection, "Taiteilija", 4, 2, 9, 5),
-                new(GestaltCycle.Retroflection.ToString(), GestaltCycle.Retroflection, "Hodariläski", 3, 7, 2, 9),
+                new(GestaltCycle.Retroflection.ToString(), GestaltCycle.Retroflection, ""/*"Hodariläski"*/, 3, 7, 2, 9),
                 new(GestaltCycle.Egotism.ToString(), GestaltCycle.Egotism, "Älykkö", 6, 2, 6, 5),
                 new(GestaltCycle.Confluence.ToString(), GestaltCycle.Confluence, "Tytöt", 5, 6, 2, 6)
             };
@@ -136,7 +136,7 @@ namespace Altzone.Scripts.Model
                 new("2", GestaltCycle.Deflection.ToString(), "2", "Huugo Hupaisa", 0, 0, 0, 0),
                 new("3", GestaltCycle.Introjection.ToString(), "3", "Paavali Pappila", 0, 0, 0, 0),
                 new("4", GestaltCycle.Projection.ToString(), "4", "Tarmo Taide", 0, 0, 0, 0),
-                new("5", GestaltCycle.Retroflection.ToString(), "5", "Hannu Hodari", 0, 0, 0, 0),
+                new("5", GestaltCycle.Retroflection.ToString(), "5", ""/*"Hannu Hodari"*/, 0, 0, 0, 0),
                 new("6", GestaltCycle.Egotism.ToString(), "6", "Albert Älypää", 0, 0, 0, 0),
                 new("7", GestaltCycle.Confluence.ToString(), "7", "Tiina & Tuula Tyllerö", 0, 0, 0, 0)
             };
